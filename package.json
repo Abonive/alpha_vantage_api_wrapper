@@ -1,0 +1,26 @@
+{
+  "name": "alpha_vintage_api",
+  "version": "0.0.1",
+  "description": "Alpha Vintage API Wrapper for Node.Js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alpha",
+    "vintage",
+    "stocks",
+    "finance",
+    "trading"
+  ],
+  "author": "Damian Kuczynski <abonive@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.12.1"
+  },
+  "dependencies": {
+    "@types/node": "^10.12.18",
+    "axios": "^0.18.0",
+    "joi": "^14.3.1"
+  }
+}
