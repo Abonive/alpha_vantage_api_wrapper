@@ -14,6 +14,12 @@ const _schemaTechInd: any = joi.object().keys({
     time_period: joi.number().integer()
 })
 
+const _schemaBBands: any = _schemaTechInd.keys({
+    nbdevup: joi.number().positive(),
+    nbdevdn: joi.number().positive(),
+    matype: joi.number().min(0).max(8),
+})
+
 const _schemaMAMA: any = _schemaTechInd.keys({
     fastlimit: joi.number().positive().precision(2),
     slowlimit: joi.number().positive().precision(2),
@@ -90,6 +96,10 @@ export class Validator {
 
         if (schema.toLowerCase() == 'macdext') {
             return _schemaMACDEXT
+        }
+
+        if (schema.toLowerCase() == 'bands') {
+            return _schemaBBands
         }
 
         if (schema.toLowerCase() == 'stoch') {
