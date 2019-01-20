@@ -1,8 +1,8 @@
 {
   "name": "alpha_vantage_api_wrapper",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Alpha Vintage API Wrapper for Node.Js",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "test": "mocha -r ts-node/register test/*_test.ts"
   },
