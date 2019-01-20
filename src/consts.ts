@@ -1,3 +1,5 @@
 export const NO_TOKEN: string = 'No API Key provided'
 export const VALIDATION_ERROR: string = 'validation_error'
 export const NO_TICKER: string = 'No TICKER Provided'
+export const NO_BASE_CURRENCY: string = 'Base Currency Ticker Required'
+export const NO_DESTINATION_CURRENCY: string = 'Destinantion Currency Ticker Required'
