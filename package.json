@@ -1,5 +1,5 @@
 {
-  "name": "alpha_vantage_api",
+  "name": "alpha_vantage_api_wrapper",
   "version": "0.0.1",
   "description": "Alpha Vintage API Wrapper for Node.Js",
   "main": "index.js",
