@@ -4,9 +4,13 @@ import { NO_TOKEN, VALIDATION_ERROR, NO_TICKER } from '../src/consts'
 import { expect, assert } from 'chai'
 import mocha from 'mocha'
 
-const a = new Alpha('demo')
+const a = new Alpha('CGFLUY4A1SR0YHIL')
 
 describe('Gets Intraday Stock Data for MSFT', () => {
+    beforeEach((done) => {
+        setTimeout(done, 400);
+    })
+
     it('Throws Validation Error for invalid Options Passed', (done) => {
         a.stocks.intraday('MSFT', {inteval: '30min'})
         .catch((err) => {
@@ -23,10 +27,6 @@ describe('Gets Intraday Stock Data for MSFT', () => {
                 expect(res["Meta Data"]["2. Symbol"]).to.equal('MSFT')
                 expect(res["Meta Data"]["4. Interval"]).to.equal('5min')
             })
-            .catch((err: any) => {
-                console.log(err)
-                expect(err.status).to.equal(VALIDATION_ERROR);
-            })
             .then(() => {
                 done();
             })
@@ -37,11 +37,8 @@ describe('Gets Intraday Stock Data for MSFT', () => {
             interval: '30min',
         })
             .then((res: any) => {
-                expect(res["Meta Data"]["2. Symbol"]).to.equal('BBVA')
+                expect(res["Meta Data"]["2. Symbol"]).to.equal('MSFT')
                 expect(res["Meta Data"]["4. Interval"]).to.equal('30min')
-            })
-            .catch((err: any) => {
-                expect(err.status).to.equal(VALIDATION_ERROR);
             })
             .then(() => {
                 done();
@@ -54,8 +51,6 @@ describe('Searches for Ticker', () => {
         a.stocks.search('BA')
         .then((res: any) => {
             expect(res.hasOwnProperty('bestMatches')).to.equal(true);
-        }).catch((res: any) => {
-
         })
         .then(() => {
             done()
@@ -64,9 +59,7 @@ describe('Searches for Ticker', () => {
 
     it('Throws Error for Empty Ticker', (done) => {
         a.stocks.search('')
-            .then((res: any) => {
-                // expect(res.hasOwnProperty('bestMatches')).to.equal(true);
-            }).catch((err: any) => {
+            .catch((err: any) => {
                 expect(err).to.equal(NO_TICKER)
             })
             .then(() => {

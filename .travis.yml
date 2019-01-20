@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "iojs"
+  - "11"
+beforeInstall:
+ - npm i npm@latest -g
+install:
+ - npm install -g typescript
+ - npm install
+script: test

@@ -6,6 +6,9 @@ import mocha from 'mocha'
 const a = new Alpha('demo')
 
 describe('Gets Sector Data', () => {
+    beforeEach((done) => {
+        setTimeout(done, 400);
+    })
     it('Retrives the data succesfully', (done) => {
         a.sector.performance()
             .then((res) => {

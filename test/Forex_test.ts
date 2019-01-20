@@ -6,6 +6,10 @@ import mocha from 'mocha'
 const a = new Alpha('demo')
 
 describe('Forex Data', () => {
+    beforeEach((done) => {
+        setTimeout(done, 400);
+    })
+
     it('Retrives Exchange Rate for USD/JPY', (done) => {
         a.forex.exchageRate('USD', 'JPY')
             .then((res) => {
