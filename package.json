@@ -15,6 +15,10 @@
   ],
   "author": "Damian Kuczynski <abonive@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Abonive/alpha_vantage_api_wrapper.git"
+  },
   "devDependencies": {
     "@types/node": "^10.12.18",
     "@types/chai": "^4.1.7",
