@@ -1,11 +1,7 @@
-var Alpha = require('./lib/index').Alpha
-var alpha = new Alpha('REE8808MDBQ589HQ');
+let Alpha = require('./lib/index').Alpha
 
-alpha.stocks.daily('BBVA.MC')
-.then((result) => {
-  console.log(result);
-}).catch((error) => {
-  console.log(error)
+const a = new Alpha('REE8808MDBQ589HQ')
+
+a.stocks.intraday('BBVA').then((res) => {
+  console.log(res["Meta Data"]["2. Symbol"]);
 })
-
-

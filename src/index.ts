@@ -4,6 +4,7 @@ export class Alpha {
   _apiKey: string;
   _url: string = 'https://www.alphavantage.co/query';
   stocks: Stocks;
+  
 
   /**
    * 
@@ -14,7 +15,7 @@ export class Alpha {
     this.stocks = new Stocks(this);
   }
 
-  protected hasApiKey() {
+  public hasApiKey() {
     if(!this._apiKey) {
       return false;
     } else {
