@@ -217,7 +217,7 @@ export class Stocks {
                 reject(ErrorSerializer.ValidationError(options_err));
             }
 
-            this.setRequiredOptions(options, 'GLOBAL_QUOTE', ticker.toUpperCase());
+            this.setRequiredOptionsSearch(options, 'SYMBOL_SEARCH', ticker.toUpperCase());
 
             axios.get(this._alpha._url, {
                 params: options
@@ -233,6 +233,14 @@ export class Stocks {
         Object.assign(options, {
             function: func,
             symbol: symbol.toUpperCase(),
+            apikey: this._alpha._apiKey
+        })
+    }
+
+    protected setRequiredOptionsSearch(options: object, func: string, symbol: string) {
+        Object.assign(options, {
+            function: func,
+            keywords: symbol.toUpperCase(),
             apikey: this._alpha._apiKey
         })
     }

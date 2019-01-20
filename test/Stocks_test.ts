@@ -4,7 +4,7 @@ import { NO_TOKEN, VALIDATION_ERROR, NO_TICKER } from '../src/consts'
 import { expect, assert } from 'chai'
 import mocha from 'mocha'
 
-const a = new Alpha('REE8808MDBQ589HQ')
+const a = new Alpha('demo')
 
 describe('Gets Intraday Stock Data for BBVA', () => {
     it('Throws Validation Error for invalid Options Passed', (done) => {
