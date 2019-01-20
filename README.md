@@ -1,6 +1,8 @@
 # Alpha Vantage API - Node.js Wrapper [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
 This is a simple wrapper package for the Alpha Vantage API<br>
-For now it only works for Stocks, Forex & Sectors.
+Stocks, Forex, Crypto & Sector API are working.
+
+*Technical indicators - work in progress*
 
 * [Instalation](#instalation)
 * [Usage](#usage)
@@ -20,6 +22,11 @@ For now it only works for Stocks, Forex & Sectors.
     * [Daily](#fx-daily)
     * [Weekly](#fx-weekly)
     * [Monthly](#fx-monthly)
+* [Crypto](#crypto-api)
+    * [Exchange Rates](#crypto-exchange-rates)
+    * [Daily](#crypto-daily)
+    * [Weekly](#crypto-weekly)
+    * [Monthly](#crypto-monthly)
 * [Sector](#sector-api)
     * [Performance](#performance)
 
@@ -189,7 +196,7 @@ alpha.stocks.search(ticker, options = optional)
 ```
 
 # Forex API
-## Fx Echange Rates
+## Fx Exchange Rates
 This API returns the realtime exchange rate for any pair of digital currency (e.g., Bitcoin) or physical currency (e.g., USD).
 ```js
 alpha.forex.exchageRate(baseCurrency, destinationCurrency)
@@ -253,6 +260,57 @@ Available options = **object**
 
 ```js
 alpha.forex.monthly(baseCurrency, destinationCurrency, options = optional)
+```
+
+# Crypto API
+## Crypto Exchange Rates
+This API returns the realtime exchange rate for any pair of digital currency (e.g., Bitcoin) or physical currency (e.g., USD).
+```js
+alpha.crypto.exchageRate(baseCurrency, destinationCurrency)
+```
+
+## Crypto Daily
+This API returns the daily historical time series for a digital currency (e.g., BTC) traded on a specific market (e.g., CNY/Chinese Yuan), refreshed daily at midnight (UTC). Prices and volumes are quoted in both the market-specific currency and USD.
+
+
+
+Available options = **object**
+```javascript
+{
+    "datatype": "json" || "csv",
+}
+```
+
+```js
+alpha.crypto.daily(baseCurrency, destinationCurrency, options = optional)
+```
+
+## Crypto Weekly
+This API returns the weekly historical time series for a digital currency (e.g., BTC) traded on a specific market (e.g., CNY/Chinese Yuan), refreshed daily at midnight (UTC). Prices and volumes are quoted in both the market-specific currency and USD.
+
+Available options = **object**
+```javascript
+{
+    "datatype": "json" || "csv",
+}
+```
+
+```js
+alpha.crypto.weekly(baseCurrency, destinationCurrency, options = optional)
+```
+
+## Crypto Monthly
+This API returns the monthly historical time series for a digital currency (e.g., BTC) traded on a specific market (e.g., CNY/Chinese Yuan), refreshed daily at midnight (UTC). Prices and volumes are quoted in both the market-specific currency and USD.
+
+Available options = **object**
+```javascript
+{
+    "datatype": "json" || "csv",
+}
+```
+
+```js
+alpha.crypto.monthly(baseCurrency, destinationCurrency, options = optional)
 ```
 
 

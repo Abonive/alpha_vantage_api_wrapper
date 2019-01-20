@@ -3,11 +3,11 @@ import { NO_TOKEN, VALIDATION_ERROR, NO_TICKER } from '../src/consts'
 import { expect, assert } from 'chai'
 import mocha from 'mocha'
 
-const a = new Alpha('demo')
+const a = new Alpha('REE8808MDBQ589HQ')
 
 describe('Forex Data', () => {
     beforeEach((done) => {
-        setTimeout(done, 400);
+        setTimeout(done, 700);
     })
 
     it('Retrives Exchange Rate for USD/JPY', (done) => {
@@ -16,7 +16,7 @@ describe('Forex Data', () => {
                 expect(res.hasOwnProperty('Realtime Currency Exchange Rate')).to.equal(true)
             })
             .catch((err) => {
-                // console.log(err)
+                console.log(err)
             })
             .then(() => {
                 done();
@@ -26,19 +26,21 @@ describe('Forex Data', () => {
     it('Retrives Intraday data for EUR/USD', (done) => {
         a.forex.intraday('EUR','USD')
             .then((res) => {
-                expect(res.hasOwnProperty('Realtime Currency Exchange Rate')).to.equal(true)
+                console.log(res)
+                expect(res.hasOwnProperty('Meta Data')).to.equal(true)
             })
             .catch((err) => {
+                console.log(err)
             })
             .then(() => {
                 done();
             })
     })
 
-    it('Retrives Intraday data for EUR/USD', (done) => {
+    it('Retrives Daily data for EUR/USD', (done) => {
         a.forex.daily('EUR', 'USD')
             .then((res) => {
-                expect(res.hasOwnProperty('Realtime Currency Exchange Rate')).to.equal(true)
+                expect(res.hasOwnProperty('Meta Data')).to.equal(true)
             })
             .catch((err) => {
             })

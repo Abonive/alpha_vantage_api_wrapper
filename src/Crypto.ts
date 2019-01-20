@@ -4,7 +4,7 @@ import { Validator } from './Validator'
 import { NO_TOKEN, NO_BASE_CURRENCY, NO_DESTINATION_CURRENCY } from './consts'
 import axios from 'axios'
 
-export class Forex {
+export class Crypto {
     _alpha: Alpha;
     readonly _interval: string = '5min'
 
@@ -35,22 +35,13 @@ export class Forex {
         });
     }
 
-    public intraday(baseCurrency: string, destinationCurrency: string, options: object = {}) {
+    public daily(baseCurrency: string, market: string, options: object = {}) {
         return new Promise((reject: Function, resolve: Function) => {
             if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
             if (baseCurrency == '') reject(NO_BASE_CURRENCY)
-            if (destinationCurrency == '') reject(NO_DESTINATION_CURRENCY)
+            if (market == '') reject(NO_DESTINATION_CURRENCY)
 
-            let options_err = Validator.validateOptions(options);
-            if (options_err) {
-                reject(ErrorSerializer.ValidationError(options_err));
-            }
-
-            if (!options.hasOwnProperty('interval')) {
-                Object.assign(options, { interval: this._interval })
-            }
-
-            this.setRequiredOptions(options, 'FX_INTRADAY', baseCurrency, destinationCurrency);
+            this.setRequiredOptions(options, 'DIGITAL_CURRENCY_DAILY', baseCurrency, market);
 
             axios.get(this._alpha._url, {
                 params: options
@@ -62,18 +53,13 @@ export class Forex {
         })
     }
 
-    public daily(baseCurrency: string, destinationCurrency: string, options: object = {}) {
+    public weekly(baseCurrency: string, market: string, options: object = {}) {
         return new Promise((reject: Function, resolve: Function) => {
             if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
             if (baseCurrency == '') reject(NO_BASE_CURRENCY)
-            if (destinationCurrency == '') reject(NO_DESTINATION_CURRENCY)
+            if (market == '') reject(NO_DESTINATION_CURRENCY)
 
-            let options_err = Validator.validateOptions(options, 'interval');
-            if (options_err) {
-                reject(ErrorSerializer.ValidationError(options_err));
-            }
-
-            this.setRequiredOptions(options, 'FX_DAILY', baseCurrency, destinationCurrency);
+            this.setRequiredOptions(options, 'DIGITAL_CURRENCY_WEEKLY', baseCurrency, market);
 
             axios.get(this._alpha._url, {
                 params: options
@@ -85,41 +71,13 @@ export class Forex {
         })
     }
 
-    public weekly(baseCurrency: string, destinationCurrency: string, options: object = {}) {
+    public monthly(baseCurrency: string, market: string, options: object = {}) {
         return new Promise((reject: Function, resolve: Function) => {
             if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
             if (baseCurrency == '') reject(NO_BASE_CURRENCY)
-            if (destinationCurrency == '') reject(NO_DESTINATION_CURRENCY)
+            if (market == '') reject(NO_DESTINATION_CURRENCY)
 
-            let options_err = Validator.validateOptions(options, ['interval', 'outputsize']);
-            if (options_err) {
-                reject(ErrorSerializer.ValidationError(options_err));
-            }
-
-            this.setRequiredOptions(options, 'FX_WEEKLY', baseCurrency, destinationCurrency);
-
-            axios.get(this._alpha._url, {
-                params: options
-            }).then((res) => {
-                resolve(res.data)
-            }).catch((err) => {
-                reject(err.data)
-            })
-        })
-    }
-
-    public monthly(baseCurrency: string, destinationCurrency: string, options: object = {}) {
-        return new Promise((reject: Function, resolve: Function) => {
-            if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
-            if (baseCurrency == '') reject(NO_BASE_CURRENCY)
-            if (destinationCurrency == '') reject(NO_DESTINATION_CURRENCY)
-
-            let options_err = Validator.validateOptions(options, ['interval', 'outputsize']);
-            if (options_err) {
-                reject(ErrorSerializer.ValidationError(options_err));
-            }
-
-            this.setRequiredOptions(options, 'FX_MONTHLY', baseCurrency, destinationCurrency);
+            this.setRequiredOptions(options, 'DIGITAL_CURRENCY_MONTHLY', baseCurrency, market);
 
             axios.get(this._alpha._url, {
                 params: options
@@ -131,11 +89,11 @@ export class Forex {
         })
     }
     
-    protected setRequiredOptions(options: object, func: string, from: string, to: string) {
+    protected setRequiredOptions(options: object, func: string, ticker: string, market: string) {
         Object.assign(options, {
             function: func,
-            from_symbol: from.toUpperCase(),
-            to_symbol: to.toUpperCase(),
+            symbol: ticker.toUpperCase(),
+            market: market.toUpperCase(),
             apikey: this._alpha._apiKey
         })
     }
