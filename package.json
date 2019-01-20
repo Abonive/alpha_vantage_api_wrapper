@@ -16,9 +16,9 @@
   "author": "Damian Kuczynski <abonive@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^10.12.18",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.5",
-    "ava": "^1.1.0",
     "chai": "^4.2.0",
     "eslint": "^5.12.1",
     "mocha": "^5.2.0",
@@ -26,7 +26,6 @@
     "typescript": "^3.2.4"
   },
   "dependencies": {
-    "@types/node": "^10.12.18",
     "axios": "^0.18.0",
     "joi": "^14.3.1"
   }
