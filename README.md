@@ -42,6 +42,15 @@ Stocks, Forex, Crypto & Sector API are working.
     * [MACD](#macd)
     * [MACDEXT](#macdext)
     * [STOCH](#stoch)
+    * [RSI](#rsi)
+    * [RSI](#rsi)
+    * [ADX](#adx)
+    * [CCI](#cci)
+    * [AROON](#aroon)
+    * [BBANDS](#bbands)
+    * [AD](#ad)
+    * [OBV](#obv)
+    * Rest - Work in progress
 
 ## Instalation
 NPM
@@ -336,7 +345,7 @@ alpha.sector.performance()
 
 # Technical Indicators
 ## SMA
-This API returns the simple moving average (SMA) values.
+This API returns the simple moving average (SMA) values.<br>
 Available options = **object**
 ```javascript
 {   
@@ -352,7 +361,7 @@ alpha.techInd.sma(ticker, options)
 ```
 
 ## EMA
-This API returns the exponential moving average (EMA) values.
+This API returns the exponential moving average (EMA) values.<br>
 Available options = **object**
 ```javascript
 {   
@@ -368,7 +377,7 @@ alpha.techInd.ema(ticker, options)
 ```
 
 ## WMA
-This API returns the weighted moving average (WMA) values
+This API returns the weighted moving average (WMA) values<br>
 Available options = **object**
 ```javascript
 {   
@@ -384,7 +393,7 @@ alpha.techInd.wma(ticker, options)
 ```
 
 ## DEMA
-This API returns the double exponential moving average (DEMA) values
+This API returns the double exponential moving average (DEMA) values<br>
 Available options = **object**
 ```javascript
 {   
@@ -400,7 +409,7 @@ alpha.techInd.dema(ticker, options)
 ```
 
 ## TEMA
-This API returns the triple exponential moving average (TEMA) values
+This API returns the triple exponential moving average (TEMA) values<br>
 Available options = **object**
 ```javascript
 {   
@@ -416,7 +425,7 @@ alpha.techInd.tema(ticker, options)
 ```
 
 ## TRIMA
-This API returns the triangular moving average (TRIMA) values
+This API returns the triangular moving average (TRIMA) values<br>
 Available options = **object**
 ```javascript
 {   
@@ -432,7 +441,7 @@ alpha.techInd.trima(ticker, options)
 ```
 
 ## KAMA
-This API returns the Kaufman adaptive moving average (KAMA) values
+This API returns the Kaufman adaptive moving average (KAMA) values<br>
 Available options = **object**
 ```javascript
 {   
@@ -448,7 +457,7 @@ alpha.techInd.kama(ticker, options)
 ```
 
 ## MAMA
-This API returns the MESA adaptive moving average (MAMA) values.
+This API returns the MESA adaptive moving average (MAMA) values.<br>
 Available options = **object**
 ```javascript
 {   
@@ -466,7 +475,7 @@ alpha.techInd.mama(ticker, options)
 ```
 
 ## T3
-This API returns the triple exponential moving average (T3) values
+This API returns the triple exponential moving average (T3) values<br>
 Available options = **object**
 ```javascript
 {   
@@ -482,7 +491,7 @@ alpha.techInd.t3(ticker, options)
 ```
 
 ## MACD
-This API returns the moving average convergence / divergence (MACD) values
+This API returns the moving average convergence / divergence (MACD) values<br>
 Available options = **object**
 ```javascript
 {   
@@ -501,7 +510,7 @@ alpha.techInd.mama(ticker, options)
 ```
 
 ## MACDEXT
-This API returns the moving average convergence / divergence values with controllable moving average type
+This API returns the moving average convergence / divergence values with controllable moving average type<br>
 Available options = **object**
 ```javascript
 {   
@@ -523,7 +532,7 @@ alpha.techInd.mamaExt(ticker, options)
 ```
 
 ## STOCH
-This API returns the stochastic oscillator (STOCH) values
+This API returns the stochastic oscillator (STOCH) values<br>
 Available options = **object**
 ```javascript
 {   
@@ -541,4 +550,104 @@ Available options = **object**
 
 ```js
 alpha.techInd.stoch(ticker, options)
+```
+
+## RSI
+This API returns the relative strength index (RSI) values<br>
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+```js
+alpha.techInd.rsi(ticker, options)
+```
+
+## ADX
+This API returns the average directional movement index (ADX) values<br>
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+```js
+alpha.techInd.adx(ticker, options)
+```
+
+## CCI
+This API returns the commodity channel index (CCI) values<br>
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+```js
+alpha.techInd.cci(ticker, options)
+```
+
+## AROON
+This API returns the Aroon (AROON) values<br>
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+```js
+alpha.techInd.aroon(ticker, options)
+```
+
+## BBANDS
+This API returns the Bollinger bands (BBANDS) values<br>
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+    "nbdevup": 2 // Integer - Default 2
+    "nbdevdn": 2 // Integer - Default 2
+    "matype": 0-8 // Integer - Default 0
+}
+```
+```js
+alpha.techInd.bbands(ticker, options)
+```
+## AD
+This API returns the Chaikin A/D line (AD) values<br>
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+```js
+alpha.techInd.ad(ticker, options)
+```
+
+## OBV
+This API returns the on balance volume (OBV) valuesT<br>
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+```js
+alpha.techInd.obv<br>(ticker, options)
 ```
