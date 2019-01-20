@@ -1,0 +1,10 @@
+image: node:11-alpine
+
+test:
+  stage: test
+  script:
+    - npm i npm@latest -g
+    - npm i
+    - npm test
+  coverage:
+    '/Statements.*?(\d+(?:\.\d+)?)%/'
