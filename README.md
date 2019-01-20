@@ -1,7 +1,9 @@
-# Alpha Vantage API - Node.js Wrapper
+# Alpha Vantage API - Node.js Wrapper [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web)
 This is a simple wrapper package for the Alpha Vantage API<br>
 For now it only works for Stocks, Forex & Sectors.
 
+* [Instalation](#instalation)
+* [Usage](#usage)
 * [Stocks](#stocks-api)
     * [Intraday](#intraday)
     * [Daily](#daily)
@@ -20,6 +22,17 @@ For now it only works for Stocks, Forex & Sectors.
     * [Monthly](#fx-monthly)
 * [Sector](#sector-api)
     * [Performance](#performance)
+
+## Instalation
+NPM
+```bash
+npm install --save alpha_vantage_api_wrapper
+```
+
+Yarn
+```bash
+yarn add alpha_vantage_api_wrapper
+```
 
 ## Usage
 Getting Simple Intraday Data for AAPL
