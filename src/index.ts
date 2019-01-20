@@ -2,6 +2,7 @@ import { Stocks } from './Stocks'
 import { Sector } from './Sector';
 import { Forex } from './Forex';
 import { Crypto } from './Crypto'
+import { TechInd } from './TechInd';
 
 export class Alpha {
   _apiKey: string;
@@ -10,6 +11,7 @@ export class Alpha {
   sector: Sector;
   forex: Forex;
   crypto: Crypto;
+  techInd: TechInd;
   
 
   /**
@@ -21,7 +23,8 @@ export class Alpha {
     this.stocks = new Stocks(this);
     this.sector = new Sector(this);
     this.forex = new Forex(this);
-    this.crypto = new Crypto(this)
+    this.crypto = new Crypto(this);
+    this.techInd = new TechInd(this);
   }
 
   public hasApiKey() {

@@ -29,6 +29,19 @@ Stocks, Forex, Crypto & Sector API are working.
     * [Monthly](#crypto-monthly)
 * [Sector](#sector-api)
     * [Performance](#performance)
+* [Technical Indicators](#technical-indicators)
+    * [SMA](#sma)
+    * [EMA](#ema)
+    * [WMA](#wma)
+    * [DEMA](#dema)
+    * [TEMA](#tema)
+    * [TRIMA](#trima)
+    * [KAMA](#kama)
+    * [MAMA](#mama)
+    * [T3](#t3)
+    * [MACD](#macd)
+    * [MACDEXT](#macdext)
+    * [STOCH](#stoch)
 
 ## Instalation
 NPM
@@ -65,9 +78,9 @@ This API returns intraday time series (timestamp, open, high, low, close, volume
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
-    "outputsize": "compact" || "full",
-    "interval": "1min" || "5min" || "15min" || "30min" || "60min"
+    "datatype": "json" || "csv", // Default "json"
+    "outputsize": "compact" || "full", // Default "compact"
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" // Default "5min"
 }
 ```
 
@@ -82,8 +95,8 @@ The most recent data point is the cumulative prices and volume information of th
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
-    "outputsize": "compact" || "full",
+    "datatype": "json" || "csv", // Default "json"
+    "outputsize": "compact" || "full", // Default "compact"
 }
 ```
 
@@ -98,8 +111,8 @@ The most recent data point is the cumulative prices and volume information of th
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
-    "outputsize": "compact" || "full",
+    "datatype": "json" || "csv", // Default "json"
+    "outputsize": "compact" || "full", // Default "compact"
 }
 ```
 
@@ -114,7 +127,7 @@ The latest data point is the cumulative prices and volume information for the we
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
+    "datatype": "json" || "csv", // Default "json"
 }
 ```
 
@@ -129,7 +142,7 @@ The latest data point is the cumulative prices and volume information for the we
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
+    "datatype": "json" || "csv", // Default "json"
 }
 ```
 
@@ -144,7 +157,7 @@ The latest data point is the cumulative prices and volume information for the mo
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
+    "datatype": "json" || "csv", // Default "json"
 }
 ```
 
@@ -159,7 +172,7 @@ The latest data point is the cumulative prices and volume information for the mo
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
+    "datatype": "json" || "csv", // Default "json"
 }
 ```
 
@@ -173,7 +186,7 @@ A lightweight alternative to the time series APIs, this service returns the late
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
+    "datatype": "json" || "csv", // Default "json"
 }
 ```
 
@@ -187,7 +200,7 @@ Looking for some specific symbols or companies?
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
+    "datatype": "json" || "csv", // Default "json"
 }
 ```
 
@@ -207,9 +220,9 @@ This API returns intraday time series (timestamp, open, high, low, close) of the
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
-    "outputsize": "compact" || "full",
-    "interval": "1min" || "5min" || "15min" || "30min" || "60min"
+    "datatype": "json" || "csv", // Default "json"
+    "outputsize": "compact" || "full", // Default "compact"
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" // Default "5min"
 }
 ```
 
@@ -223,8 +236,8 @@ This API returns the daily time series (timestamp, open, high, low, close) of th
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
-    "outputsize": "compact" || "full",
+    "datatype": "json" || "csv", // Default "json"
+    "outputsize": "compact" || "full", // Default "compact"
 }
 ```
 
@@ -239,7 +252,7 @@ The latest data point is the cumulative price information for the week (or parti
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
+    "datatype": "json" || "csv", // Default "json"
 }
 ```
 
@@ -254,7 +267,7 @@ The latest data point is the cumulative prices information for the month (or par
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
+    "datatype": "json" || "csv", // Default "json"
 }
 ```
 
@@ -277,7 +290,7 @@ This API returns the daily historical time series for a digital currency (e.g., 
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
+    "datatype": "json" || "csv", // Default "json"
 }
 ```
 
@@ -291,7 +304,7 @@ This API returns the weekly historical time series for a digital currency (e.g.,
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
+    "datatype": "json" || "csv", // Default "json"
 }
 ```
 
@@ -305,7 +318,7 @@ This API returns the monthly historical time series for a digital currency (e.g.
 Available options = **object**
 ```javascript
 {
-    "datatype": "json" || "csv",
+    "datatype": "json" || "csv", // Default "json"
 }
 ```
 
@@ -319,4 +332,213 @@ alpha.crypto.monthly(baseCurrency, destinationCurrency, options = optional)
 This API returns the realtime and historical sector performances calculated from S&P500 incumbents.
 ```js
 alpha.sector.performance()
+```
+
+# Technical Indicators
+## SMA
+This API returns the simple moving average (SMA) values.
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+
+```js
+alpha.techInd.sma(ticker, options)
+```
+
+## EMA
+This API returns the exponential moving average (EMA) values.
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+
+```js
+alpha.techInd.ema(ticker, options)
+```
+
+## WMA
+This API returns the weighted moving average (WMA) values
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+
+```js
+alpha.techInd.wma(ticker, options)
+```
+
+## DEMA
+This API returns the double exponential moving average (DEMA) values
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+
+```js
+alpha.techInd.dema(ticker, options)
+```
+
+## TEMA
+This API returns the triple exponential moving average (TEMA) values
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+
+```js
+alpha.techInd.tema(ticker, options)
+```
+
+## TRIMA
+This API returns the triangular moving average (TRIMA) values
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+
+```js
+alpha.techInd.trima(ticker, options)
+```
+
+## KAMA
+This API returns the Kaufman adaptive moving average (KAMA) values
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+
+```js
+alpha.techInd.kama(ticker, options)
+```
+
+## MAMA
+This API returns the MESA adaptive moving average (MAMA) values.
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+    "fastlimit" 0.01, // Float - Default 0.01
+    "slowlimit": 0.01 // Float - Default 0.01
+}
+```
+
+```js
+alpha.techInd.mama(ticker, options)
+```
+
+## T3
+This API returns the triple exponential moving average (T3) values
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+}
+```
+
+```js
+alpha.techInd.t3(ticker, options)
+```
+
+## MACD
+This API returns the moving average convergence / divergence (MACD) values
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+    "fastperiod" 12, // Integer - Default 12
+    "slowperiod": 26, // Integer - Default 26
+    "signalperiod": 9, // Integer - Default 9
+}
+```
+
+```js
+alpha.techInd.mama(ticker, options)
+```
+
+## MACDEXT
+This API returns the moving average convergence / divergence values with controllable moving average type
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+    "fastperiod" 12, // Integer - Default 12
+    "slowperiod": 26, // Integer - Default 26
+    "signalperiod": 9, // Integer - Default 9
+    "fastmatype": 0, // Integer - Default 0-8
+    "slowmatype": 0, // Integer - Default 0-8
+    "signalmatype": 0, // Integer - Default 0-8
+}
+```
+
+```js
+alpha.techInd.mamaExt(ticker, options)
+```
+
+## STOCH
+This API returns the stochastic oscillator (STOCH) values
+Available options = **object**
+```javascript
+{   
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min" || "daily weekly" || "monthly" // String - Default = "5min"
+    "time_period": 60 || 200 // Integer - Default 60
+    "series_type": "close" || "open" || "high" || "low"  // String - Default "close"
+    "datatype": "json" || "csv", // String - Default "json"
+    "fastkperiod" 5, // Integer - Default 5
+    "slowkperiod": 3, // Integer - Default 3
+    "slowdperiod": 3, // Integer - Default 3
+    "slowkmatype": 0, // Integer - Default 0-8
+    "slowdmatype": 0, // Integer - Default 0-8
+}
+```
+
+```js
+alpha.techInd.stoch(ticker, options)
 ```
