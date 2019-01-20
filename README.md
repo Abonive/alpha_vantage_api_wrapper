@@ -22,14 +22,14 @@ For now it only works for Stocks, Forex & Sectors.
     * [Performance](#performance)
 
 ## Usage
-Getting Simple Intraday Data for APPL
+Getting Simple Intraday Data for AAPL
 ```javascript
 var Alpha = require('alpha_vantage_api_wrapper').Alpha
 var alpha = new Alpha('api-key')
 
-alpha.stocks.intraday('APPL')
+alpha.stocks.intraday('AAPL')
 .then((res) => {
-    // To what you want with the data
+    // Do what you want with the data
 })
 .catch((err) => {
     // Handle the error
