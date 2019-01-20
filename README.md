@@ -1,8 +1,8 @@
 # Alpha Vantage API - Node.js Wrapper
 This is a simple wrapper package for the Alpha Vantage API<br>
-For now it only works for Stocks.
+For now it only works for Stocks & Sectors.
 
-* Stocks
+* [Stocks](#stocks-api)
     * [Intraday](#intraday)
     * [Daily](#daily)
     * [Daily Adjusted](#daily-adjusted)
@@ -12,6 +12,8 @@ For now it only works for Stocks.
     * [Monthly Adjusted](#monthly-Adjusted)
     * [Quote](#quote)
     * [Search](#search)
+* [Sector](#sector-api)
+    * [Performance](#performance)
 
 ## Usage
 Getting Simple Intraday Data for APPL
@@ -165,4 +167,12 @@ Available options = **object**
 
 ```js
 alpha.stocks.search(ticker, options = optional)
+```
+
+
+# Sector API
+## Performance
+This API returns the realtime and historical sector performances calculated from S&P500 incumbents.
+```js
+alpha.sector.performance()
 ```
