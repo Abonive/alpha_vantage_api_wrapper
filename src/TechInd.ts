@@ -316,6 +316,188 @@ export class TechInd {
         })
     }
 
+    public rsi(ticker: string, options: object = {}) {
+        return new Promise((reject: Function, resolve: Function) => {
+            if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
+            if (ticker == '') reject(NO_TICKER)
+
+            let o = this._options
+
+            let options_err = Validator.validateTechInd(options);
+            if (options_err) {
+                reject(ErrorSerializer.ValidationError(options_err));
+            }
+
+            Object.assign(o, options);
+            this.setRequiredOptions(o, 'RSI', ticker)
+
+            axios.get(this._alpha._url, {
+                params: o
+            }).then((res) => {
+                resolve(res.data)
+            }).catch((err) => {
+                reject(err.data)
+            })
+        })
+    }
+
+    public ad(ticker: string, options: object = {}) {
+        return new Promise((reject: Function, resolve: Function) => {
+            if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
+            if (ticker == '') reject(NO_TICKER)
+
+            let o: any = this._options
+            delete o['series_type']
+            delete o['time_period']
+
+            let options_err = Validator.validateTechInd(options, '_schma', ['series_type', 'time_period']);
+            if (options_err) {
+                reject(ErrorSerializer.ValidationError(options_err));
+            }
+
+            Object.assign(o, options);
+            this.setRequiredOptions(o, 'AD', ticker)
+
+            axios.get(this._alpha._url, {
+                params: o
+            }).then((res) => {
+                resolve(res.data)
+            }).catch((err) => {
+                reject(err.data)
+            })
+        })
+    }
+
+    public adx(ticker: string, options: object = {}) {
+        return new Promise((reject: Function, resolve: Function) => {
+            if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
+            if (ticker == '') reject(NO_TICKER)
+
+            let o :any = this._options   
+            delete o['series_type']
+
+            let options_err = Validator.validateTechInd(options, '_schma', 'series_type');
+            if (options_err) {
+                reject(ErrorSerializer.ValidationError(options_err));
+            }
+
+            Object.assign(o, options);
+            this.setRequiredOptions(o, 'ADX', ticker)
+
+            axios.get(this._alpha._url, {
+                params: o
+            }).then((res) => {
+                resolve(res.data)
+            }).catch((err) => {
+                reject(err.data)
+            })
+        })
+    }
+
+    public cci(ticker: string, options: object = {}) {
+        return new Promise((reject: Function, resolve: Function) => {
+            if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
+            if (ticker == '') reject(NO_TICKER)
+
+            let o: any = this._options
+            delete o['series_type']
+
+            let options_err = Validator.validateTechInd(options, '_schma', 'series_type');
+            if (options_err) {
+                reject(ErrorSerializer.ValidationError(options_err));
+            }
+
+            Object.assign(o, options);
+            this.setRequiredOptions(o, 'CCI', ticker)
+
+            axios.get(this._alpha._url, {
+                params: o
+            }).then((res) => {
+                resolve(res.data)
+            }).catch((err) => {
+                reject(err.data)
+            })
+        })
+    }
+
+    public aroon(ticker: string, options: object = {}) {
+        return new Promise((reject: Function, resolve: Function) => {
+            if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
+            if (ticker == '') reject(NO_TICKER)
+
+            let o: any = this._options
+            delete o['series_type']
+
+            let options_err = Validator.validateTechInd(options, '_schma', 'series_type');
+            if (options_err) {
+                reject(ErrorSerializer.ValidationError(options_err));
+            }
+
+            Object.assign(o, options);
+            this.setRequiredOptions(o, 'AROON', ticker)
+
+            axios.get(this._alpha._url, {
+                params: o
+            }).then((res) => {
+                resolve(res.data)
+            }).catch((err) => {
+                reject(err.data)
+            })
+        })
+    }
+
+    public bbands(ticker: string, options: object = {}) {
+        return new Promise((reject: Function, resolve: Function) => {
+            if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
+            if (ticker == '') reject(NO_TICKER)
+
+            let o: any = this._options
+
+            let options_err = Validator.validateTechInd(options, 'bands');
+            if (options_err) {
+                reject(ErrorSerializer.ValidationError(options_err));
+            }
+
+            Object.assign(o, options);
+            this.setRequiredOptions(o, 'BBANDS', ticker)
+
+            axios.get(this._alpha._url, {
+                params: o
+            }).then((res) => {
+                resolve(res.data)
+            }).catch((err) => {
+                reject(err.data)
+            })
+        })
+    }
+
+    public obv(ticker: string, options: object = {}) {
+        return new Promise((reject: Function, resolve: Function) => {
+            if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
+            if (ticker == '') reject(NO_TICKER)
+
+            let o: any = this._options
+            delete o['series_type']
+            delete o['time_period']
+
+            let options_err = Validator.validateTechInd(options, '_schma', ['series_type', 'time_period']);
+            if (options_err) {
+                reject(ErrorSerializer.ValidationError(options_err));
+            }
+
+            Object.assign(o, options);
+            this.setRequiredOptions(o, 'OBV', ticker)
+
+            axios.get(this._alpha._url, {
+                params: o
+            }).then((res) => {
+                resolve(res.data)
+            }).catch((err) => {
+                reject(err.data)
+            })
+        })
+    }
+
     protected setRequiredOptions(options: object, func: string, ticker: string) {
         Object.assign(options, {
             function: func,
