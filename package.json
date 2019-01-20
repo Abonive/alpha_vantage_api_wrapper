@@ -1,6 +1,6 @@
 {
   "name": "alpha_vantage_api_wrapper",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Alpha Vintage API Wrapper for Node.Js",
   "main": "./lib/index.js",
   "scripts": {

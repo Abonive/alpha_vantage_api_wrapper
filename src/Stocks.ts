@@ -34,7 +34,7 @@ export class Stocks {
 
             let options_err = this.validateOptions(options);
             if(options_err) {
-                reject(options_err);
+                reject(ErrorSerializer.ValidationError(options_err));
             }
 
             if (!options.hasOwnProperty('interval')) {

@@ -4,7 +4,7 @@ import { NO_TOKEN, VALIDATION_ERROR, NO_TICKER } from '../src/consts'
 import { expect, assert } from 'chai'
 import mocha from 'mocha'
 
-const a = new Alpha('demo')
+const a = new Alpha('REE8808MDBQ589HQ')
 
 describe('Gets Intraday Stock Data for BBVA', () => {
     it('Throws Validation Error for invalid Options Passed', (done) => {
@@ -24,6 +24,7 @@ describe('Gets Intraday Stock Data for BBVA', () => {
                 expect(res["Meta Data"]["4. Interval"]).to.equal('5min')
             })
             .catch((err: any) => {
+                console.log(err)
                 expect(err.status).to.equal(VALIDATION_ERROR);
             })
             .then(() => {

@@ -1,5 +1,17 @@
 # Alpha Vantage API - Node.js Wrapper
 This is a simple wrapper package for the Alpha Vantage API
+For now it only works for Stocks.
+
+* Stocks
+    * [Intraday](#Intraday)
+    * [Daily](#Daily)
+    * [Daily Adjusted](#Daily-Adjusted)
+    * [Weekly](#Weekly)
+    * [Weekly Adjusted](#Weekly-Adjusted)
+    * [Monthly](#Monthly)
+    * [Monthly Adjusted](#Monthly-Adjusted)
+    * [Quote](#Quote)
+    * [Search](#Search)
 
 ## Usage
 Getting Simple Intraday Data for APPL
@@ -14,4 +26,143 @@ alpha.stocks.intraday('APPL')
 .catch((err) => {
     // Handle the error
 })
+```
+
+
+# Stocks API
+
+## Intraday
+This API returns intraday time series (timestamp, open, high, low, close, volume) of the equity specified.
+
+Available options
+```json
+{
+    "datatype": "json" || "csv",
+    "outputsize": "compact" || "full",
+    "interval": "1min" || "5min" || "15min" || "30min" || "60"
+}
+```
+
+```js
+alpha.stocks.intraday(ticker, options = optional)
+```
+
+## Daily
+This API returns daily time series (date, daily open, daily high, daily low, daily close, daily volume) of the global equity specified, covering 20+ years of historical data.<br>
+The most recent data point is the cumulative prices and volume information of the current trading day, updated realtime.
+
+Available options
+```json
+{
+    "datatype": "json" || "csv",
+    "outputsize": "compact" || "full",
+}
+```
+
+```js
+alpha.stocks.daily(ticker, options = optional)
+```
+
+## Daily Adjusted
+This API returns daily time series (date, daily open, daily high, daily low, daily close, daily volume, daily adjusted close, and split/dividend events) of the global equity specified, covering 20+ years of historical data.<br>
+The most recent data point is the cumulative prices and volume information of the current trading day, updated realtime.
+
+Available options
+```json
+{
+    "datatype": "json" || "csv",
+    "outputsize": "compact" || "full",
+}
+```
+
+```js
+alpha.stocks.dailyAdjusted(ticker, options = optional)
+```
+
+## Weekly
+This API returns weekly time series (last trading day of each week, weekly open, weekly high, weekly low, weekly close, weekly volume) of the global equity specified, covering 20+ years of historical data.<br>
+The latest data point is the cumulative prices and volume information for the week (or partial week) that contains the current trading day, updated realtime.
+
+Available options
+```json
+{
+    "datatype": "json" || "csv",
+}
+```
+
+```js
+alpha.stocks.weekly(ticker, options = optional)
+```
+
+## Weekly Adjusted
+This API returns weekly adjusted time series (last trading day of each week, weekly open, weekly high, weekly low, weekly close, weekly adjusted close, weekly volume, weekly dividend) of the global equity specified, covering 20+ years of historical data.<br>
+The latest data point is the cumulative prices and volume information for the week (or partial week) that contains the current trading day, updated realtime.
+
+Available options
+```json
+{
+    "datatype": "json" || "csv",
+}
+```
+
+```js
+alpha.stocks.weeklyAdjusted(ticker, options = optional)
+```
+
+## Monthly
+This API returns monthly time series (last trading day of each month, monthly open, monthly high, monthly low, monthly close, monthly volume) of the global equity specified, covering 20+ years of historical data.<br>
+The latest data point is the cumulative prices and volume information for the month (or partial month) that contains the current trading day, updated realtime.
+
+Available options
+```json
+{
+    "datatype": "json" || "csv",
+}
+```
+
+```js
+alpha.stocks.monthly(ticker, options = optional)
+```
+
+## Monthly Adjusted
+This API returns monthly adjusted time series (last trading day of each month, monthly open, monthly high, monthly low, monthly close, monthly adjusted close, monthly volume, monthly dividend) of the equity specified, covering 20+ years of historical data.<br>
+The latest data point is the cumulative prices and volume information for the month (or partial month) that contains the current trading day, updated realtime.
+
+Available options
+```json
+{
+    "datatype": "json" || "csv",
+}
+```
+
+```js
+alpha.stocks.monthlyAdjusted(ticker, options = optional)
+```
+
+## Quote
+A lightweight alternative to the time series APIs, this service returns the latest price and volume information for a security of your choice.
+
+Available options
+```json
+{
+    "datatype": "json" || "csv",
+}
+```
+
+```js
+alpha.stocks.quote(ticker, options = optional)
+```
+
+## Search
+Looking for some specific symbols or companies?
+
+Available options
+```json
+{
+    "datatype": "json" || "csv",
+}
+```
+
+```js
+alpha.stocks.search(ticker, options = optional)
 ```

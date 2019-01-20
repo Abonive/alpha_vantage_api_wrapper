@@ -3,3 +3,4 @@ node_modules
 test
 .gitlab-ci.yml
 .eslintrc
+test.js
