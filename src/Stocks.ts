@@ -8,8 +8,7 @@ let joi = require('joi');
 let schema = joi.object().keys({
     datatype: joi.any().valid('csv', 'json'),
     outputsize: joi.any().valid('compact', 'full'),
-    interval: joi.any().valid('1min','5min','15min','30min','60min'),
-    keywords: joi.string()
+    interval: joi.any().valid('1min','5min','15min','30min','60min')
 })
 
 
@@ -35,7 +34,7 @@ export class Stocks {
 
             let options_err = this.validateOptions(options);
             if(options_err) {
-                reject(ErrorSerializer.ValidationError(options_err));
+                reject(options_err);
             }
 
             if (!options.hasOwnProperty('interval')) {
@@ -251,7 +250,7 @@ export class Stocks {
         }
 
         let err = null;
-        if (isNullOrUndefined(forbiddenKeys)) {
+        if (isNullOrUndefined(forbiddenKeys) || forbiddenKeys == '') {
             let { error } = joi.validate(options, schema)
             err = error;
         } else {
