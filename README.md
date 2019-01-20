@@ -1,6 +1,6 @@
 # Alpha Vantage API - Node.js Wrapper
 This is a simple wrapper package for the Alpha Vantage API<br>
-For now it only works for Stocks & Sectors.
+For now it only works for Stocks, Forex & Sectors.
 
 * [Stocks](#stocks-api)
     * [Intraday](#intraday)
@@ -12,13 +12,19 @@ For now it only works for Stocks & Sectors.
     * [Monthly Adjusted](#monthly-Adjusted)
     * [Quote](#quote)
     * [Search](#search)
+* [Forex](#forex-api)
+    * [Exchange Rates](#fx-exchange-rates)
+    * [Intraday](#fx-intraday)
+    * [Daily](#fx-daily)
+    * [Weekly](#fx-weekly)
+    * [Monthly](#fx-monthly)
 * [Sector](#sector-api)
     * [Performance](#performance)
 
 ## Usage
 Getting Simple Intraday Data for APPL
 ```javascript
-var Alpha = require('alpha_vantage_api').Alpha
+var Alpha = require('alpha_vantage_api_wrapper').Alpha
 var alpha = new Alpha('api-key')
 
 alpha.stocks.intraday('APPL')
@@ -41,7 +47,7 @@ Available options = **object**
 {
     "datatype": "json" || "csv",
     "outputsize": "compact" || "full",
-    "interval": "1min" || "5min" || "15min" || "30min" || "60"
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min"
 }
 ```
 
@@ -167,6 +173,73 @@ Available options = **object**
 
 ```js
 alpha.stocks.search(ticker, options = optional)
+```
+
+# Forex API
+## Fx Echange Rates
+This API returns the realtime exchange rate for any pair of digital currency (e.g., Bitcoin) or physical currency (e.g., USD).
+```js
+alpha.forex.exchageRate(baseCurrency, destinationCurrency)
+```
+## Fx Intraday
+This API returns intraday time series (timestamp, open, high, low, close) of the FX currency pair specified, updated realtime.
+
+Available options = **object**
+```javascript
+{
+    "datatype": "json" || "csv",
+    "outputsize": "compact" || "full",
+    "interval": "1min" || "5min" || "15min" || "30min" || "60min"
+}
+```
+
+```js
+alpha.forex.intraday(baseCurrency, destinationCurrency, options = optional)
+```
+
+## Fx Daily
+This API returns the daily time series (timestamp, open, high, low, close) of the FX currency pair specified, updated realtime.
+
+Available options = **object**
+```javascript
+{
+    "datatype": "json" || "csv",
+    "outputsize": "compact" || "full",
+}
+```
+
+```js
+alpha.forex.daily(baseCurrency, destinationCurrency, options = optional)
+```
+
+## Fx Weekly
+This API returns the weekly time series (timestamp, open, high, low, close) of the FX currency pair specified, updated realtime.<br>
+The latest data point is the cumulative price information for the week (or partial week) containing the current trading day, updated realtime.
+
+Available options = **object**
+```javascript
+{
+    "datatype": "json" || "csv",
+}
+```
+
+```js
+alpha.forex.weekly(baseCurrency, destinationCurrency, options = optional)
+```
+
+## Fx Monthly
+This API returns the monthly time series (timestamp, open, high, low, close) of the FX currency pair specified, updated realtime.<br>
+The latest data point is the cumulative prices information for the month (or partial month) containing the current trading day, updated realtime.
+
+Available options = **object**
+```javascript
+{
+    "datatype": "json" || "csv",
+}
+```
+
+```js
+alpha.forex.monthly(baseCurrency, destinationCurrency, options = optional)
 ```
 
 

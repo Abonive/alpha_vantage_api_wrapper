@@ -1,5 +1,6 @@
 import { Alpha } from './index';
 import { ErrorSerializer } from './ErrorSerializer'
+import {Validator} from './Validator'
 import { NO_TOKEN, NO_TICKER } from './consts'
 import axios from 'axios'
 import { isNullOrUndefined } from 'util';
@@ -32,7 +33,7 @@ export class Stocks {
             if (ticker == '') reject(NO_TICKER)
 
 
-            let options_err = this.validateOptions(options);
+            let options_err = Validator.validateOptions(options);
             if(options_err) {
                 reject(ErrorSerializer.ValidationError(options_err));
             }
@@ -58,7 +59,7 @@ export class Stocks {
             if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
             if (ticker == '') reject(NO_TICKER)
 
-            let options_err = this.validateOptions(options, 'interval');
+            let options_err = Validator.validateOptions(options, 'interval');
             if (options_err) {
                 reject(ErrorSerializer.ValidationError(options_err));
             }
@@ -80,7 +81,7 @@ export class Stocks {
             if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
             if (ticker == '') reject(NO_TICKER)
 
-            let options_err = this.validateOptions(options, ['interval', 'outputsize']);
+            let options_err = Validator.validateOptions(options, ['interval', 'outputsize']);
             if (options_err) {
                 reject(ErrorSerializer.ValidationError(options_err));
             }
@@ -102,7 +103,7 @@ export class Stocks {
             if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
             if (ticker == '') reject(NO_TICKER)
 
-            let options_err = this.validateOptions(options, ['interval', 'outputsize']);
+            let options_err = Validator.validateOptions(options, ['interval', 'outputsize']);
             if (options_err) {
                 reject(ErrorSerializer.ValidationError(options_err));
             }
@@ -124,7 +125,7 @@ export class Stocks {
             if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
             if (ticker == '') reject(NO_TICKER)
 
-            let options_err = this.validateOptions(options, ['interval', 'outputsize']);
+            let options_err = Validator.validateOptions(options, ['interval', 'outputsize']);
             if (options_err) {
                 reject(ErrorSerializer.ValidationError(options_err));
             }
@@ -146,7 +147,7 @@ export class Stocks {
             if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
             if (ticker == '') reject(NO_TICKER)
 
-            let options_err = this.validateOptions(options, ['interval', 'outputsize']);
+            let options_err = Validator.validateOptions(options, ['interval', 'outputsize']);
             if (options_err) {
                 reject(ErrorSerializer.ValidationError(options_err));
             }
@@ -168,7 +169,7 @@ export class Stocks {
             if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
             if (ticker == '') reject(NO_TICKER)
 
-            let options_err = this.validateOptions(options, ['interval', 'outputsize']);
+            let options_err = Validator.validateOptions(options, ['interval', 'outputsize']);
             if (options_err) {
                 reject(ErrorSerializer.ValidationError(options_err));
             }
@@ -189,7 +190,7 @@ export class Stocks {
         return new Promise((resolve: Function, reject: Function) => {
             if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
 
-            let options_err = this.validateOptions(options, ['interval', 'outputsize']);
+            let options_err = Validator.validateOptions(options, ['interval', 'outputsize']);
             if (options_err) {
                 reject(ErrorSerializer.ValidationError(options_err));
             }
@@ -211,7 +212,7 @@ export class Stocks {
             if (!this._alpha.hasApiKey()) reject(NO_TOKEN)
             if (ticker == '') reject(NO_TICKER)
 
-            let options_err = this.validateOptions(options, ['interval', 'outputsize']);
+            let options_err = Validator.validateOptions(options, ['interval', 'outputsize']);
             if (options_err) {
                 reject(ErrorSerializer.ValidationError(options_err));
             }
@@ -242,22 +243,5 @@ export class Stocks {
             keywords: symbol.toUpperCase(),
             apikey: this._alpha._apiKey
         })
-    }
-
-    protected validateOptions (options: Object, forbiddenKeys: String | Array<String> = '') {
-        if(options == {}) {
-            return null
-        }
-
-        let err = null;
-        if (isNullOrUndefined(forbiddenKeys) || forbiddenKeys == '') {
-            let { error } = joi.validate(options, schema)
-            err = error;
-        } else {
-            let { error } = joi.validate(options, schema.forbiddenKeys(forbiddenKeys))
-            err = error;
-        }
-
-        return err
     }
 }

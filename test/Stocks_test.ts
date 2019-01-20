@@ -4,11 +4,11 @@ import { NO_TOKEN, VALIDATION_ERROR, NO_TICKER } from '../src/consts'
 import { expect, assert } from 'chai'
 import mocha from 'mocha'
 
-const a = new Alpha('REE8808MDBQ589HQ')
+const a = new Alpha('demo')
 
-describe('Gets Intraday Stock Data for BBVA', () => {
+describe('Gets Intraday Stock Data for MSFT', () => {
     it('Throws Validation Error for invalid Options Passed', (done) => {
-        a.stocks.intraday('BBVA', {inteval: '30min'})
+        a.stocks.intraday('MSFT', {inteval: '30min'})
         .catch((err) => {
             expect(err.status).to.equal(VALIDATION_ERROR);
         })
@@ -18,9 +18,9 @@ describe('Gets Intraday Stock Data for BBVA', () => {
     })
 
     it('Succesfully retrives Data with no options ', (done) => {
-        a.stocks.intraday('BBVA')
+        a.stocks.intraday('MSFT')
             .then((res: any) => {
-                expect(res["Meta Data"]["2. Symbol"]).to.equal('BBVA')
+                expect(res["Meta Data"]["2. Symbol"]).to.equal('MSFT')
                 expect(res["Meta Data"]["4. Interval"]).to.equal('5min')
             })
             .catch((err: any) => {
@@ -33,7 +33,7 @@ describe('Gets Intraday Stock Data for BBVA', () => {
     })
 
     it('Succesfully retrives Data with options ', (done) => {
-        a.stocks.intraday('BBVA', {
+        a.stocks.intraday('MSFT', {
             interval: '30min',
         })
             .then((res: any) => {
@@ -51,7 +51,7 @@ describe('Gets Intraday Stock Data for BBVA', () => {
 
 describe('Searches for Ticker', () => {
     it('Finds Tickers', (done) => {
-        a.stocks.search('BBVA')
+        a.stocks.search('BA')
         .then((res: any) => {
             expect(res.hasOwnProperty('bestMatches')).to.equal(true);
         }).catch((res: any) => {
